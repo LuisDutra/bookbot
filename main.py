@@ -4,18 +4,22 @@ def main():
     num_words = get_num_words(text)
     chars_dict = get_chars_dict(text)
     report = get_book_report(chars_dict)
-    #print(chars_dict)
+
+    print("Beging report of: " + book_path)
+    print(f"{num_words} words found in the document")
+
+    for r in report:
+        if r[0].isalpha():
+            print(f"The letter {r[0]} was found {r[1]} times")
+
+    print("--- End report ---")
 
 def sort_on(chars_dict):
     return chars_dict["num"]
 
 def get_book_report(chars_dict):
-    dicList = list(chars_dict.items())
-
-    dicList.sort()
-
-    for dic in dicList:
-        print(dic)    
+    
+   return sorted(chars_dict.items(), key=lambda item: item[1], reverse=True)
 
 def get_num_words(text):
     words = text.split()
